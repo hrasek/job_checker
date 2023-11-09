@@ -1,24 +1,22 @@
-def place(jobs_list, key_list) -> list:
-    locations = key_list.index('locations')
-    remote =  key_list.index('isRemote')
-    filtered_list = []
+from typing import Any
+
+def place(jobs_list: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    filtered_list: list[dict[str, Any]] = []
     for job in jobs_list:
-        if 'Brno' in job[locations] or job[remote] == True:
+        if 'Brno' in job['locations'] or job['isRemote'] == True:
             filtered_list.append(job) 
     return filtered_list
 
-def shift(jobs_list, key_list) -> list:
-    shifts = key_list.index('shifts')
-    filtered_list = []
+def shift(jobs_list: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    filtered_list: list[dict[str, Any]] = []
     for job in jobs_list:
-        if 'Full-time' in job[shifts]:
+        if 'Full-time' in job['shifts']:
             filtered_list.append(job)
     return filtered_list
 
-def seniority(jobs_list, key_list) -> list:
-    seniorities = key_list.index('seniorities')
-    filtered_list = []
+def seniority(jobs_list: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    filtered_list: list[dict[str, Any]] = []
     for job in jobs_list:
-        if 'junior' in job[seniorities]:
+        if 'junior' in job['seniorities']:
             filtered_list.append(job)
     return filtered_list    
