@@ -8,11 +8,11 @@ def get_current() -> list[dict[str, Any]]:
     while True:
         try:
             link = link[0:-1] + str(i)
-            r = requests.get(link)
-            a = r.json()
-            jobs_list.extend(a['resultSet'])
+            response = requests.get(link)
+            response_dict = response.json()
+            results: list[dict[str, Any]] = response_dict['resultSet']
+            jobs_list.append(results)
             i+=1
         except:
             break
- #   print(jobs_list[0])
     return jobs_list
